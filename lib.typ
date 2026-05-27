@@ -3,6 +3,7 @@
 #let verse-indent = state("verse-indent", 1em)
 #let verse-number-modulo = state("verse-number-modulo", 1)
 #let v-after-poemtitle = state("v-after-poemtitle", 20pt)
+#let verse-number-size = state("verse-number-size", 8pt)
 
 // Printing inline poemtitles
 
@@ -37,7 +38,7 @@
   for element in poemcontent {
     let current-indent = verseindents.at(calc.rem-euclid(current-verse - 1, verseindents.len())) * verse-indent.get()
     if element == parbreak() or element == linebreak() {
-      let current-verse-number = text(size: 8pt)[#current-verse]
+      let current-verse-number = text(size: verse-number-size.get())[#current-verse]
       [#poemcontent.insert(current-element,[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [#box(inset: (left: -measure([#current-verse-number.]).width))[#current-verse-number]]<verse-number>
       #h(current-indent)])]
       current-element += 1
@@ -87,7 +88,7 @@
   for element in poemcontent {
     let current-indent = verseindents.at(calc.rem-euclid(current-verse - 1, verseindents.len())) * verse-indent.get()
     if element == parbreak() or element == linebreak() {
-      let current-verse-number = text(size: 8pt)[#current-verse]
+      let current-verse-number = text(size: verse-number-size)[#current-verse]
       [#poemcontent.insert(current-element,[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [#box(inset: (left: -measure([#current-verse-number.]).width))[#current-verse-number]]<verse-number>
       #h(current-indent)])]
       current-element += 1
