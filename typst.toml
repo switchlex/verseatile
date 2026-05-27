@@ -1,0 +1,9 @@
+[package]
+name = "verseatile"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Alexander Abt"]
+license = "MIT"
+description = "Easily set poetry with indentations and numbered verses."
+repository = ""
+keywords = ["verse", "poem", "poetry"]
