@@ -1,1 +1,1 @@
-# typst-poem-package
+# verseatile
