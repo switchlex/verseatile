@@ -7,3 +7,4 @@ license = "MIT"
 description = "Easily set poetry with indentations and numbered verses."
 repository = ""
 keywords = ["verse", "poem", "poetry"]
+exclude = ["example.*"]
