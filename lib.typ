@@ -1,9 +1,9 @@
 // Global parameters
 
 #let verse-indent = state("verse-indent", 1em)
-#let verse-number-modulo = state("verse-number-modulo", 1)
 #let v-after-poemtitle = state("v-after-poemtitle", 20pt)
 #let verse-number-size = state("verse-number-size", 8pt)
+#let verse-number-modulo = state("verse-number-modulo", 1)
 
 // Printing inline poemtitles
 
