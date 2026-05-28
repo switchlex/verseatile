@@ -12,7 +12,7 @@
   repository: "https://github.com/switchlex/verseatile",
   title: "verseatile",
   abstract: [
-    #lorem(50)
+    verseatile is a small package for setting poetry with Typst, capable of easily indenting and numbering verses while providing many options for customization. 
   ],
   theme: themes.orly
 )
@@ -149,6 +149,16 @@ necte meo Lamiae coronam,
 
 === Using indentpatterns <using-indentpatterns>
 
+By default all verses are indented in relation to the poemtitle. This base indentation is configureable via updating a state variable: 
+
+#variable("base-indent", types:("length",), value: 1em)[
+  #side-by-side[
+    ```typ
+    #base-indent.update()
+    ```
+  ][Default: 1em]
+]
+
 The #arg("indentpattern") specifies how the verses of the #arg("poembody") for a given poem are to be indented. It consist of a series of numbers demarking the level of indentation and is repeatedly applied. With every level (starting from 0) the verse is incrementally indented by the same space which is configureable via updating a state variable: 
 
 #variable("verse-indent", types:("length",), value: 1em)[
@@ -219,8 +229,6 @@ Displaying only every $n$-th verse number can be achieved via updating a state v
     ```
   ][Default: 1]
 ]
-
-#pagebreak()
 
 An example of using 8pt verse numbers and only displaying them for every second verse might look like this:
 
