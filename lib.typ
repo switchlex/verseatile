@@ -2,12 +2,12 @@
 
 #let verse-indent = state("verse-indent", 1em)
 #let v-after-poemtitle = state("v-after-poemtitle", 20pt)
-#let verse-number-size = state("verse-number-size", 8pt)
 #let verse-number-modulo = state("verse-number-modulo", 1)
+#let show-verse-numbers = state("show-verse-numbers", false) 
 
 // Printing inline poemtitles
 
-#let inline_poemtitle(part-of-verse) = {
+#let inline-poemtitle(part-of-verse) = {
   [#box(height: 0pt, width: 0pt, clip: true,
   [#hide[#part-of-verse<poemtitle>]])]
   [#box(part-of-verse)<inline-poemtitle>]}
@@ -38,9 +38,11 @@
   for element in poemcontent {
     let current-indent = verseindents.at(calc.rem-euclid(current-verse - 1, verseindents.len())) * verse-indent.get()
     if element == parbreak() or element == linebreak() {
-      let current-verse-number = text(size: verse-number-size.get())[#current-verse]
-      [#poemcontent.insert(current-element,[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [#box(inset: (left: -measure([#current-verse-number.]).width))[#current-verse-number]]<verse-number>
-      #h(current-indent)])]
+      if show-verse-numbers.get() { 
+        [#poemcontent.insert(current-element,[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [#box(inset: (left: -measure([#current-verse.]).width))[#current-verse]]<verse-number>
+        #h(current-indent)])]}
+      else [
+        #poemcontent.insert(current-element,h(current-indent))]
       current-element += 1
       current-verse += 1}
     current-element += 1}
@@ -64,7 +66,7 @@
 
 // Printing poems in cycles
   
-#let poem_incycle(poemtitle, poembody, indentpattern) = {[
+#let poem-incycle(poemtitle, poembody, indentpattern) = {[
 
   #context{
   
@@ -88,9 +90,11 @@
   for element in poemcontent {
     let current-indent = verseindents.at(calc.rem-euclid(current-verse - 1, verseindents.len())) * verse-indent.get()
     if element == parbreak() or element == linebreak() {
-      let current-verse-number = text(size: verse-number-size)[#current-verse]
-      [#poemcontent.insert(current-element,[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [#box(inset: (left: -measure([#current-verse-number.]).width))[#current-verse-number]]<verse-number>
-      #h(current-indent)])]
+      if show-verse-numbers.get() { 
+        [#poemcontent.insert(current-element,[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [#box(inset: (left: -measure([#current-verse.]).width))[#current-verse]]<verse-number>
+        #h(current-indent)])]}
+      else [
+        #poemcontent.insert(current-element,h(current-indent))]
       current-element += 1
       current-verse += 1}
     current-element += 1}
