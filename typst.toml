@@ -8,4 +8,4 @@ description = "Easily set poetry."
 repository = "https://github.com/switchlex/verseatile"
 keywords = ["verse", "poem", "poetry"]
 categories = ["text", "layout"]
-exclude = ["example.*", "manual.*"]
+exclude = ["examples/*", "manual.*"]
