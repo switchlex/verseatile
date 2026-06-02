@@ -2,9 +2,12 @@
 
 #let base-indent = state("base-indent", 1em)
 #let verse-indent = state("verse-indent", 1em)
+
 #let v-after-poemtitle = state("v-after-poemtitle", 20pt)
+
+#let show-verse-numbers = state("show-verse-numbers", false)
 #let verse-number-modulo = state("verse-number-modulo", 1)
-#let show-verse-numbers = state("show-verse-numbers", false) 
+#let verse-number-distance = state("verse-number-distance", 5pt)
 
 // Printing inline poemtitles
 
@@ -40,8 +43,9 @@
     let current-indent = (verseindents.at(calc.rem-euclid(current-verse - 1, verseindents.len())) - 1) * verse-indent.get() + base-indent.get()
     if element == parbreak() or element == linebreak() {
       if show-verse-numbers.get() { 
-        [#poemcontent.insert(current-element,[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [#box(inset: (left: -measure([#current-verse.]).width))[#current-verse]]<verse-number>
-        #h(current-indent)])]}
+        [#poemcontent.insert(current-element,[#box(width: 0pt)[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [
+          #align(right)[#current-verse #h(verse-number-distance.get())]]]<verse-number>
+        #h(current-indent - 2.75pt)])]}
       else [
         #poemcontent.insert(current-element,h(current-indent))]
       current-element += 1
@@ -92,8 +96,9 @@
     let current-indent = (verseindents.at(calc.rem-euclid(current-verse - 1, verseindents.len())) - 1) * verse-indent.get() + base-indent.get()
     if element == parbreak() or element == linebreak() {
       if show-verse-numbers.get() { 
-        [#poemcontent.insert(current-element,[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [#box(inset: (left: -measure([#current-verse.]).width))[#current-verse]]<verse-number>
-        #h(current-indent)])]}
+        [#poemcontent.insert(current-element,[#box(width: 0pt)[#if calc.rem-euclid(current-verse, verse-number-modulo.get()) == 0 [
+          #align(right)[#current-verse #h(verse-number-distance.get())]]]<verse-number>
+        #h(current-indent - 2.75pt)])]}
       else [
         #poemcontent.insert(current-element,h(current-indent))]
       current-element += 1
