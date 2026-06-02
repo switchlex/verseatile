@@ -1,4 +1,4 @@
-#import "@preview/verseatile:0.1.0": *
+#import "@preview/verseatile:0.1.1": *
 
 #show <poemtitle>: it => text(
   size: 14pt,
