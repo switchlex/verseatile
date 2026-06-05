@@ -25,9 +25,12 @@
 
 To print a poem simply use the @cmd:poem function:
 
-#command("poem", arg("poemtitle"), arg("poembody"), arg("indentpattern"))[
+#command("poem", arg("poemtitle"), arg("poemdedication), arg("poembody"), arg("indentpattern"))[
   #argument("poemtitle", types:("content"))[
     The poem's title.
+  ]
+  #argument("poemdedication", types:("content"))[
+    The poem dedication.
   ]
   #argument("poembody", types:("content"))[
     The poem itself --- The end of a verse must be marked with »#sym.backslash«. The end of a stanza however must not be marked with »#sym.backslash« but with an empty line.
@@ -42,7 +45,7 @@ A first example might look like this:
 
 #side-by-side[
 ```typ
-#poem[Hor. carm. I, 26][
+#poem[Hor. carm. I, 26][Ad Augustum][
 
 Musis amicus tristitiam et metus \
 tradam protervis in mare Creticum \
@@ -56,7 +59,7 @@ necte meo Lamiae coronam,
 
 ][0]
 ```][
-#poem[Hor. carm. I, 26][
+#poem[Hor. carm. I, 26][Ad Augustum][
 
 Musis amicus tristitiam et metus \
 tradam protervis in mare Creticum \
@@ -91,7 +94,7 @@ The vertical space between the #arg("poemtitle") and the #arg("poembody") is con
   ][Default: 20pt]
 ]
 
-If #arg("poemtitle") is left empty a part of the first verse can be set as an inline poemtitle using the @cmd:inline-poemtitle function:
+If #arg("poemtitle") is left empty, a part of the first verse can be set as an inline poemtitle using the @cmd:inline-poemtitle function:
 
 #command("inline-poemtitle", arg("part-of-verse"))[]
 
@@ -173,7 +176,7 @@ An example of indenting every third line of the poem to the first and every four
 
 #side-by-side[
 ```typ
-#poem[Hor. carm. I, 26][
+#poem[Hor. carm. I, 26][Ad Augustem][
 
 Musis amicus tristitiam et metus \
 tradam protervis in mare Creticum \
@@ -187,7 +190,7 @@ necte meo Lamiae coronam,
 
 ][0012]
 ```][
-#poem[Hor. carm. I, 26][
+#poem[Hor. carm. I, 26][Ad Augustum][
   
 Musis amicus tristitiam et metus \
 tradam protervis in mare Creticum \
@@ -250,7 +253,7 @@ An example of using 8pt verse numbers and only displaying them for every second 
 #show <verse-number>: set text(
   size: 8pt)
 
-#poem[Hor. carm. I, 26][
+#poem[Hor. carm. I, 26][][
 
 Musis amicus tristitiam et metus \
 tradam protervis in mare Creticum \
@@ -271,7 +274,7 @@ necte meo Lamiae coronam,
   size: 8pt
 )
 
-#poem[Hor. carm. I, 26][
+#poem[Hor. carm. I, 26][][
 
 Musis amicus tristitiam et metus \
 tradam protervis in mare Creticum \
@@ -427,6 +430,13 @@ necte meo Lamiae coronam,
 ]
 
 = Changelog
+
+#text(size: 14pt, weight: "bold")[v.0.1.2]
+
+- New feature
+  - Added a poem dedication argument to '#poem' - note, backward compatibility break
+- Documentation
+  - Updated manual
 
 #text(size: 14pt, weight: "bold")[v.0.1.1]
 

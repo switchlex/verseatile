@@ -5,6 +5,9 @@
 
 #let v-after-poemtitle = state("v-after-poemtitle", 20pt)
 
+// smaller space before dedication, if any
+#let v-before-poemdedication = state("v-after-poemtitle", 10pt)
+
 #let show-verse-numbers = state("show-verse-numbers", false)
 #let verse-number-modulo = state("verse-number-modulo", 1)
 #let verse-number-distance = state("verse-number-distance", 5pt)
@@ -18,13 +21,19 @@
 
 // Printing poems
 
-#let poem(poemtitle, poembody, indentpattern) = {[
+#let poem(poemtitle, poembody, poemdedication, indentpattern) = {[
 
   #context {
 
   // Print the poemtitle
 
   if poemtitle != [] [#poemtitle<poemtitle>] else [#hide[0 <poemtitle>]]
+  if poemdedication != [] {
+    v(v-before-poemdedication.get(), weak: true)
+    h(10em) // TODO: make this smarter
+    set text(8pt, style: "italic") // TODO: and this, too
+    [#poemdedication<poemdedication>]
+  } else [#hide[0 <poemdedication>]]
   v(v-after-poemtitle.get(), weak: true)
   
   // Map the indent pattern and poembody to an array
