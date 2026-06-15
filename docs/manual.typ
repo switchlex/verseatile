@@ -1,9 +1,9 @@
 #import "@preview/mantys:1.0.2": *
-#import "@local/verseatile:0.2.0": *
+#import "@preview/verseatile:0.2.1": *
 
 #show: mantys(
   name: "verseatile",
-  version: "0.2.0",
+  version: "0.2.1",
   authors: (
     "by Alexander Abt",
   ),
@@ -61,7 +61,7 @@ To print a poem simply use the @cmd:poem function:
   #argument("poembody", types:("content"))[
     The poem itself --- The end of a verse must be marked with »#sym.backslash«. The end of a stanza however must not be marked with »#sym.backslash« but with an empty line.
   ]
-  #warning-alert[#icons.warning Note that (as of v.0.2.0) the #arg("poembody") must also start with an empty line for indentation and verse numbers to properly work.]
+  #warning-alert[#icons.warning Note that (as of v.0.2.1) the #arg("poembody") must also start with an empty line for indentation and verse numbers to properly work.]
   #argument("indentpattern", types:("content"))[
     Specification for the indentation of verses --- If no line in the poem is to be specially indented this should be 0. For advanced use of indentpatterns see @indentpatterns.
   ]
@@ -324,7 +324,7 @@ necte meo Lamiae coronam, ...
 
 Interjections can be placed at any point in the #arg("poembody"). They are not counted as verses, will be rendered with normal spacing and can be useful for advanced styling (see @advanced-styling).
 
-#warning-alert[#icons.warning Note that (as of v.0.2.0) a line interjections must not be followed with »\\«.]
+#warning-alert[#icons.warning Note that (as of v.0.2.1) a line interjections must not be followed with »\\«.]
 
 An example of interjected strophe- and antistrophe markings might look like this:
 
@@ -444,13 +444,13 @@ plus uno maneat perenne saeclo.
 
 == Splitting verses <splitting-verses>
 
-#error-alert[#icons.warning Note that (as of v.0.2.0) verse numbers for split verses will only be counted and displayed correctly if they are used within the same stanza!]
+#error-alert[#icons.warning Note that (as of v.0.2.1) verse numbers for split verses will only be counted and displayed correctly if they are used within the same stanza!]
 
 Single verses can be split over multiple lines by using the @cmd:splitverse and @cmd:versesplit functions. To split a verse into two parts the first part must be wrapped by the former:
 
 #command("splitverse", arg("part-of-verse"))[]
 
-#warning-alert[#icons.warning Note that (as of v.0.2.0) a line using the @cmd:splitverse function must be followed with »\\«.]
+#warning-alert[#icons.warning Note that (as of v.0.2.1) a line using the @cmd:splitverse function must be followed with »\\«.]
 
 The second part in the following line must then be preceeded by a call of the latter:
 
@@ -587,7 +587,7 @@ Presets are preconfigured style sets that can be used for simple and effective s
   ```
 ][]
 
-As of v.0.2.0 the following presets are included with the package:
+As of v.0.2.1 the following presets are included with the package:
 
 === classic
 
@@ -646,7 +646,7 @@ The styling of almost all relevant elements can also be completely customized by
   see @inline-poemtitles]
 ]
 
-#warning-alert[#icons.warning Note that (as of v.0.2.0), if \<poemtitle> is shown to be a heading, inline poemtitles may be shown different but will also appear in the outline (on the same level).]
+#warning-alert[#icons.warning Note that (as of v.0.2.1), if \<poemtitle> is shown to be a heading, inline poemtitles may be shown different but will also appear in the outline (on the same level).]
 
 #side-by-side[
   ```typst
@@ -706,6 +706,13 @@ The styling of almost all relevant elements can also be completely customized by
 
 = Changelog
 
+#text(size: 14pt, weight: "bold")[v.0.2.1]
+
+- Fixes:
+  - Prevented issues with interjections/split verses and verse numbers caused by the restructured code.
+- Documentation:
+  - Updated the manual.
+
 #text(size: 14pt, weight: "bold")[v.0.2.0]
 
 - New features:
@@ -719,6 +726,7 @@ The styling of almost all relevant elements can also be completely customized by
   - Added presets (`classic`, `classic-headings`).
 - Fixes:
   - Reworked inline poemtitles to prevent false headings being displayed in the outline in certain constellations.
+  - Restructered and commented the code.
 - Documentation:
   - Updated the manual.
   - Updated the readme.
