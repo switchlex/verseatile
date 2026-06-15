@@ -1,7 +1,7 @@
 # verseatile
 
 [![Link to the package at Typst universe](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswitchlex%2Fverseatile%2Frefs%2Fheads%2Fmain%2Ftypst.toml&query=%24.package.version&prefix=v.&logo=typst&label=Typst%20Universe&labelColor=white&color=grey)](https://typst.app/universe/package/verseatile)
-[![Link to the manual (pdf) for detailed documentation](https://img.shields.io/badge/Manual-pdf-grey?labelColor=white)](https://raw.githubusercontent.com/switchlex/verseatile/0.2.0/docs/manual.pdf)
+[![Link to the manual (pdf) for detailed documentation](https://img.shields.io/badge/Manual-pdf-grey?labelColor=white)](https://raw.githubusercontent.com/switchlex/verseatile/0.2.1/docs/manual.pdf)
 [![Link to the license (MIT)](https://img.shields.io/badge/License-MIT-grey?labelColor=white)](./LICENSE)
 
 verseatile is a small package for setting poetry with [Typst](https://github.com/typst/typst), capable of easily indenting and numbering verses while providing many options for customization.
@@ -12,7 +12,7 @@ verseatile is a small package for setting poetry with [Typst](https://github.com
 
 To print a poem, simply use the #poem function:
 ```typst
-#import "@preview/verseatile:0.2.0": *
+#import "@preview/verseatile:0.2.1": *
 
 #poem[Hor. carm. I, 26][
 
@@ -67,7 +67,7 @@ To display verse numbers toggle #show-verse-numbers:
 #show-verse-numbers.update(true)
 ```
 
-Verse numbers can also be set to number only every $n$-th verse:
+Verse numbers can also be set to number only every n-th verse:
 
 ```typst
 #verse-number-modulo.update(2)
@@ -81,7 +81,7 @@ Presets are preconfigured style sets that can be used for simple and effective s
 #show: preset-name
 ```
 
-As of v.0.2.0 the following presets are included with the package:
+As of v.0.2.1 the following presets are included with the package:
 
 - `classic`
   - `classic-headings`
@@ -91,7 +91,7 @@ As of v.0.2.0 the following presets are included with the package:
 Utilizing both the indentpattern and numbering verses while applying a preset, one might arrive at this simple, yet elegant rendition of our poem shown on the left in the [example image](examples/example.png) at the top of the page:
 
 ```typst
-#import "@preview/verseatile:0.2.0": *
+#import "@preview/verseatile:0.2.1": *
 
 #show: preset-classic
 
@@ -119,9 +119,17 @@ teque tuasque decet sorores.
 ```
 
 ## Advanced usage
+
 For advanced usage such as inline poemtitles, interjections, dedications, splitting verses, setting cycles of poems as well as detailed options for customization confer the [manual](docs/manual.pdf).
 
 ## Changelog
+
+### v.0.2.1
+
+- Fixes:
+  - Prevented issues with interjections/split verses and verse numbers caused by the restructured code.
+- Documentation:
+  - Updated the manual.
 
 ### v.0.2.0
 
@@ -136,6 +144,7 @@ For advanced usage such as inline poemtitles, interjections, dedications, splitt
   - Added presets (`classic`, `classic-headings`).
 - Fixes:
   - Reworked inline poemtitles to prevent false headings being displayed in the outline in certain constellations.
+  - Restructered and commented the code.
 - Documentation:
   - Updated the manual.
   - Updated the readme.
