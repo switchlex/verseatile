@@ -87,10 +87,6 @@
     #verseindents.push(int(verseindent)+1)]
   let poemcontent = poembody.fields().values().at(0)
   poemcontent.pop()
-
-  // Testing for special elements in the poembody 
-  let is-special(element) = {
-    is-interjection(poemcontent.at(element, default: [])) or is-splitverse(poemcontent.at(element + 1, default: []))}
   
   // Initialize counting parameters
   let next-element = 1
@@ -105,6 +101,9 @@
 
   // Insert indents (and verse-numbers)
   for element in poemcontent {
+    // Test for special elements
+    let is-special(element) = {
+      is-interjection(poemcontent.at(element, default: [])) or is-splitverse(poemcontent.at(element + 1, default: []))}
     // Calculate the current-indent
     let current-indent = (verseindents.at(calc.rem-euclid(current-verse, verseindents.len())) - 1) * verse-indent.get() + base-indent.get()
     // If the element marks the end of a stanza or verse ...
