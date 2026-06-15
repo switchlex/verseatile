@@ -1,4 +1,4 @@
-#import "@preview/verseatile:0.2.0": *
+#import "@preview/verseatile:0.2.1": *
 
 #set page(height: auto, width: auto)
 
